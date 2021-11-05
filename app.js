@@ -1,7 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+
+const Thing = require('./models/thing');
 
 const app = express();
+
+mongoose.connect('mongodb+srv://admin:admin@openclassroom-tutorial.3ibzi.mongodb.net/test?retryWrites=true&w=majority',
+{
+  useNewUrlParser: true,
+  useUnifiedTopology: true })
+  .then(() => console.log('connexion à mongoDB réussie !'))
+  .catch(() => console.log('connexion à mongoDB échouée !'));
+
 
 // CORS
 app.use((req,res,next) => {
